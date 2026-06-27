@@ -1,0 +1,342 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn about House Of Lancers, our mission, vision, core values, and our timeline of digital growth and workflow automation success.">
+  <title>About Us | House Of Lancers | Modern Growth Partner</title>
+  
+  <script>
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+      document.documentElement.classList.add('light-mode');
+    }
+  </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+  <!-- Custom Cursor & Noise Overlay -->
+  <div class="custom-cursor"></div>
+  <div class="noise-overlay"></div>
+
+  <!-- Header Section -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="House Of Lancers Logo" class="logo-img" style="height: 48px; width: auto; display: block;">
+      </a>
+      
+      <button class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+        <li class="nav-item dropdown">
+          <a href="services.html" class="nav-link">Services</a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item"><a href="smm.html">Social Media Marketing</a></li>
+            <li class="dropdown-item"><a href="automation.html">Business Automation</a></li>
+            <li class="dropdown-item"><a href="design.html">Creative Designing</a></li>
+            <li class="dropdown-item"><a href="video.html">Video Editing</a></li>
+            <li class="dropdown-item" style="border-top: 1px solid rgba(215, 195, 115, 0.1);"><a href="services.html">All 15 Services</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a href="portfolio.html" class="nav-link">Our Work</a></li>
+        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        <li class="nav-item">
+          <button class="theme-toggle" aria-label="Toggle Theme"></button>
+        </li>
+        <li class="nav-item" style="margin-left: 0.5rem;">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSca13hRUp14_aPqM2UjQ_M1jSXeE0o-gK9Z7NqT0_placeholder/viewform" target="_blank" class="btn btn-primary book-strategy-trigger">Book Strategy Call</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- About Banner Section -->
+  <section class="section about-hero" style="padding-top: 12rem; overflow: hidden; background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);">
+    <div class="ambient-glow" style="top: 20%; left: 10%;"></div>
+    
+    <!-- Abstract Vector -->
+    <svg class="abstract-vector abstract-line-1" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="40" stroke-dasharray="4 4"/>
+      <line x1="0" y1="50" x2="100" y2="50"/>
+      <line x1="50" y1="0" x2="50" y2="100"/>
+    </svg>
+
+    <div class="container" style="max-width: 1000px; text-align: center;">
+      <span class="section-tag">Who We Are</span>
+      <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem;" class="text-gradient">
+        Building Brands.<br>Transforming Businesses.
+      </h1>
+      <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto; color: var(--text-secondary);">
+        House Of Lancers is a modern growth and automation agency helping businesses unlock their full potential through strategic consultation, technology integrations, premium creative design, and digital workflows. Our mission is to simplify business growth through digital transformation.
+      </p>
+    </div>
+  </section>
+
+  <!-- Mission Vision Values Sections -->
+  <section class="section">
+    <div class="ambient-glow" style="bottom: 10%; right: 5%;"></div>
+    <div class="container">
+      <div class="grid-2" style="margin-bottom: 4rem;">
+        <div class="glass-card">
+          <span style="color: var(--accent); font-family: var(--font-heading); font-weight: 700; font-size: 0.9rem; text-transform: uppercase;">01 / Our Story</span>
+          <h2 style="color: var(--text-primary); font-size: 2rem; margin: 1rem 0;">How We Began</h2>
+          <p style="margin-bottom: 1.5rem;">
+            House Of Lancers was established to solve a critical business bottleneck: the disconnect between design agencies that don't understand technology, and software consultancies that don't understand conversion-driven marketing.
+          </p>
+          <p>
+            By uniting seasoned marketers, creative designers, and workflow engineers under one roof, we created an execution powerhouse that handles operations and media buying in perfect alignment.
+          </p>
+        </div>
+
+        <div class="glass-card">
+          <span style="color: var(--accent); font-family: var(--font-heading); font-weight: 700; font-size: 0.9rem; text-transform: uppercase;">02 / Why We Exist</span>
+          <h2 style="color: var(--text-primary); font-size: 2rem; margin: 1rem 0;">Our Core Purpose</h2>
+          <p style="margin-bottom: 1.5rem;">
+            Ambitious brands waste hundreds of hours manually routing leads, chasing payments, and managing inconsistent social media calendars. 
+          </p>
+          <p>
+            We exist to eliminate friction. We deploy modern business workflows and marketing systems so founders and sales leaders can focus entirely on making key decisions and closing bigger deals.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="glass-card" style="padding: 2rem;">
+          <h3 class="accent-text" style="font-size: 1.5rem; margin-bottom: 1rem;">Our Mission</h3>
+          <p>To deliver measurable revenue growth and operational scalability to businesses by deploying world-class, premium design systems and advanced AI automations.</p>
+        </div>
+
+        <div class="glass-card" style="padding: 2rem;">
+          <h3 class="accent-text" style="font-size: 1.5rem; margin-bottom: 1rem;">Our Vision</h3>
+          <p>To become the leading digital transformation partner globally, recognized for bridging the gap between premium design aesthetics and robust backend technology.</p>
+        </div>
+
+        <div class="glass-card" style="padding: 2rem;">
+          <h3 class="accent-text" style="font-size: 1.5rem; margin-bottom: 1rem;">Core Values</h3>
+          <p>Absolute Transparency, Data-First Execution, Premium Aesthetics, Technical Precision, and Client-Partner Alignment in every sprint.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Timeline Section -->
+  <section class="section" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Our Process</span>
+        <h2 class="section-title">The Scaling Roadmap</h2>
+        <p class="section-subtitle">How we partner with brands to take them from disjointed workflows to scaled operational automation.</p>
+      </div>
+
+      <div class="timeline-container" style="position: relative; max-width: 800px; margin: 0 auto; padding: 2rem 0;">
+        <div class="timeline-line" style="position: absolute; top: 0; bottom: 0; left: 30px; width: 2px; background-color: var(--border);"></div>
+        
+        <style>
+          .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            padding-left: 70px;
+          }
+          .timeline-dot {
+            position: absolute;
+            left: 21px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--bg-primary);
+            border: 3px solid var(--accent);
+            z-index: 10;
+            transition: var(--transition);
+          }
+          .timeline-item:hover .timeline-dot {
+            background-color: var(--accent);
+            box-shadow: 0 0 15px var(--accent);
+          }
+          .timeline-step {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+          }
+        </style>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-step">Phase 01 / Discovery &amp; Strategy Audit</div>
+          <div class="glass-card" style="padding: 1.5rem 2rem;">
+            <h3 style="color: var(--text-primary); font-size: 1.3rem; margin-bottom: 0.5rem;">Process Diagnostic</h3>
+            <p>We analyze your sales funnel, visual assets, and internal software tools. We identify operational leaks, lead routing lag times, and branding gaps to map out an execution plan.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-step">Phase 02 / Creative &amp; Brand Elevation</div>
+          <div class="glass-card" style="padding: 1.5rem 2rem;">
+            <h3 style="color: var(--text-primary); font-size: 1.3rem; margin-bottom: 0.5rem;">Visual Upgrades</h3>
+            <p>We recreate your website user interface, design luxury brand guidelines, build corporate pitch decks, and align social content structures with high-end aesthetic value.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-step">Phase 03 / Automation &amp; CRM Sync</div>
+          <div class="glass-card" style="padding: 1.5rem 2rem;">
+            <h3 style="color: var(--text-primary); font-size: 1.3rem; margin-bottom: 0.5rem;">Technical Integration</h3>
+            <p>We deploy CRM pipelines, build WhatsApp automated responders, connect lead forms to instant notification systems, and script backend operations to eliminate manual work.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item" style="margin-bottom: 0;">
+          <div class="timeline-dot"></div>
+          <div class="timeline-step">Phase 04 / PPC Advertising &amp; Growth Scaling</div>
+          <div class="glass-card" style="padding: 1.5rem 2rem;">
+            <h3 style="color: var(--text-primary); font-size: 1.3rem; margin-bottom: 0.5rem;">Funnel Activation</h3>
+            <p>We launch high-intent Facebook, Instagram, and Google Ad campaigns, funneling leads directly into your automated pipelines. We continuously optimize conversion rates for maximal client ROI.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section" style="padding: 8rem 2rem;">
+    <div class="container" style="text-align: center; max-width: 800px;">
+      <h2 style="font-size: 2.8rem; margin-bottom: 1.5rem; color: var(--text-primary);">Work with a Partner, Not a Vendor</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 2.5rem;">Let's audit your business models, implement custom workflows, and build premium aesthetic value for your brand.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSca13hRUp14_aPqM2UjQ_M1jSXeE0o-gK9Z7NqT0_placeholder/viewform" target="_blank" class="btn btn-primary book-strategy-trigger">Initiate Strategy Session</a>
+    </div>
+  </section>
+
+  <!-- WhatsApp Floating Widget -->
+  <div class="whatsapp-float">
+    <svg viewBox="0 0 24 24">
+      <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.333 4.982L2 22l5.233-1.371a9.994 9.994 0 004.78 1.217h.004c5.502 0 9.981-4.479 9.982-9.984A9.987 9.987 0 0012.012 2zm4.7 13.999c-.207.586-1.203 1.14-1.662 1.205-.418.06-1.06.14-2.9-0.62-2.35-.97-3.83-3.34-3.95-3.5-0.11-.16-0.96-1.27-0.96-2.43 0-1.15.6-1.72.82-1.95.2-.23.47-.29.62-.29.15 0 .3 0 .43.01.14 0 .32-.05.5.38.19.46.65 1.58.71 1.7.06.12.1.26.02.43-.08.17-.16.27-.3.43-.15.16-.31.36-.44.48-.15.14-.3.29-.13.58.17.29.76 1.25 1.63 2.03.1.09.2.14.3.17.3.11.58.05.8-.02.2-.06.62-.25.71-.5.09-.25.09-.47.06-.51-.03-.05-.12-.08-.25-.14-1.3-.06-1.53-.13-1.77-.22-.09-.03-.16-.05-.23.06-.24.36-.6.76-.74.92-.14.16-.27.17-.5.06a8.88 8.88 0 01-2.92-1.8 9.9 9.9 0 01-2.02-2.52c-.17-.29-.02-.45.13-.6.13-.13.3-.35.45-.52.12-.17.17-.29.26-.48.09-.2.04-.37-.02-.5-.06-.13-.5-1.2-.69-1.66-.18-.44-.37-.38-.5-.39h-.43c-.15 0-.39.06-.6.29a3.29 3.29 0 00-1.03 2.45c0 1.55.97 3.05 1.13 3.26.17.21 2.46 3.76 5.96 5.27.83.36 1.48.57 1.99.73.83.26 1.59.22 2.19.14.67-.1 2.06-.84 2.35-1.66z"/>
+    </svg>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <img src="images/logo.png" alt="House Of Lancers Logo" class="logo-img" style="height: 44px; width: auto; display: block;">
+        </a>
+        <p>House Of Lancers is a premium growth partner. We scale brands through high-performing marketing, creative luxury design, custom AI integrations, and operational workflows.</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/house_of_lancers/" class="social-link" target="_blank" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/house-of-lancers/" class="social-link" target="_blank" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+          <a href="https://twitter.com/HouseOfLancers" class="social-link" target="_blank" aria-label="Twitter">
+            <svg viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+          </a>
+          <a href="https://medium.com/@houseoflancers" class="social-link" target="_blank" aria-label="Medium">
+            <svg viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-links-grid">
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="index.html">Home</a></li>
+            <li class="footer-link-item"><a href="about.html">About Us</a></li>
+            <li class="footer-link-item"><a href="services.html">Our Services</a></li>
+            <li class="footer-link-item"><a href="portfolio.html">Our Portfolio</a></li>
+            <li class="footer-link-item"><a href="admin.html" style="color: var(--accent); font-weight: bold;">CMS Admin</a></li>
+            <li class="footer-link-item"><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Core Services</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="smm.html">Social Media Marketing</a></li>
+            <li class="footer-link-item"><a href="automation.html">Business Automation</a></li>
+            <li class="footer-link-item"><a href="design.html">Creative Designing</a></li>
+            <li class="footer-link-item"><a href="video.html">Video Editing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Contact</h4>
+          <ul class="footer-links" style="color: var(--text-muted); font-size: 0.95rem;">
+            <li style="margin-bottom: 0.8rem;">Vishal Apartment, Navrangpura, Ahmedabad, India</li>
+            <li style="margin-bottom: 0.8rem;">houseoflancers@gmail.com</li>
+            <li style="margin-bottom: 0.8rem;">+91 73831 32301</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2026 House Of Lancers. All Rights Reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="contact.html">Terms of Service</a>
+        <a href="contact.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    
+    gsap.from('.about-hero h1, .about-hero p', {
+      opacity: 0,
+      y: 30,
+      duration: 1,
+      stagger: 0.2,
+      ease: 'power3.out'
+    });
+    
+    // Timeline Animations
+    gsap.utils.toArray('.timeline-item').forEach(item => {
+      gsap.from(item.querySelector('.glass-card'), {
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        },
+        opacity: 0,
+        x: -40,
+        duration: 0.8,
+        ease: 'power3.out'
+      });
+      gsap.from(item.querySelector('.timeline-dot'), {
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        },
+        scale: 0,
+        duration: 0.5,
+        ease: 'back.out(2)'
+      });
+    });
+  </script>
+</body>
+</html>

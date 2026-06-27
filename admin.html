@@ -1,0 +1,617 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Manage blog posts, insights, and marketing articles for the House Of Lancers website.">
+  <title>CMS Blog Manager | House Of Lancers</title>
+  
+  <script>
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+      document.documentElement.classList.add('light-mode');
+    }
+  </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+  <!-- Custom Cursor & Noise Overlay -->
+  <div class="custom-cursor"></div>
+  <div class="noise-overlay"></div>
+
+  <!-- Header Section -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="House Of Lancers Logo" class="logo-img" style="height: 48px; width: auto; display: block;">
+      </a>
+      
+      <button class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+        <li class="nav-item dropdown">
+          <a href="services.html" class="nav-link">Services</a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item"><a href="smm.html">Social Media Marketing</a></li>
+            <li class="dropdown-item"><a href="automation.html">Business Automation</a></li>
+            <li class="dropdown-item"><a href="design.html">Creative Designing</a></li>
+            <li class="dropdown-item"><a href="video.html">Video Editing</a></li>
+            <li class="dropdown-item" style="border-top: 1px solid rgba(215, 195, 115, 0.1);"><a href="services.html">All 15 Services</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a href="portfolio.html" class="nav-link">Our Work</a></li>
+        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        <li class="nav-item">
+          <button class="theme-toggle" aria-label="Toggle Theme"></button>
+        </li>
+        <li class="nav-item" style="margin-left: 0.5rem;">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSca13hRUp14_aPqM2UjQ_M1jSXeE0o-gK9Z7NqT0_placeholder/viewform" target="_blank" class="btn btn-primary book-strategy-trigger">Book Strategy Call</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- CMS Container Section -->
+  <section class="section cms-dashboard-section" style="padding-top: 12rem; min-height: 90vh;">
+    <div class="ambient-glow" style="top: 15%; right: 10%;"></div>
+    <div class="ambient-glow" style="bottom: 10%; left: 5%;"></div>
+    
+    <div class="container">
+      <div class="section-header" style="text-align: left; margin-bottom: 3.5rem; max-width: 100%; display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; flex-wrap: wrap;">
+        <div>
+          <span class="section-tag" style="margin-bottom: 1rem;">Control Panel</span>
+          <h1 style="font-size: 3rem; margin-bottom: 0.5rem;" class="text-gradient">Lancers Ledger CMS</h1>
+          <p style="font-size: 1rem; color: var(--text-secondary); max-width: 600px;">
+            Publish, edit, and manage articles displaying on the House Of Lancers public blog directory.
+          </p>
+        </div>
+        <div>
+          <button type="button" class="btn btn-primary" id="openCreateModalBtn">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right: 0.3rem;">
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
+            Create New Article
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats row -->
+      <div class="grid-3" style="margin-bottom: 3rem; gap: 1.5rem;">
+        <div class="glass-card" style="padding: 1.8rem; display: flex; align-items: center; gap: 1.5rem;">
+          <div style="width: 50px; height: 50px; border-radius: 4px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; background: rgba(var(--accent-rgb), 0.02);">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--accent)" stroke-width="2">
+              <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+            </svg>
+          </div>
+          <div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Total Published</div>
+            <div style="font-size: 1.8rem; font-weight: 700; font-family: var(--font-heading);" id="statTotalArticles">0</div>
+          </div>
+        </div>
+
+        <div class="glass-card" style="padding: 1.8rem; display: flex; align-items: center; gap: 1.5rem;">
+          <div style="width: 50px; height: 50px; border-radius: 4px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; background: rgba(var(--accent-rgb), 0.02);">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--accent)" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
+            </svg>
+          </div>
+          <div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Active Authors</div>
+            <div style="font-size: 1.8rem; font-weight: 700; font-family: var(--font-heading);" id="statTotalAuthors">0</div>
+          </div>
+        </div>
+
+        <div class="glass-card" style="padding: 1.8rem; display: flex; align-items: center; gap: 1.5rem;">
+          <div style="width: 50px; height: 50px; border-radius: 4px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; background: rgba(var(--accent-rgb), 0.02);">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--accent)" stroke-width="2">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+            </svg>
+          </div>
+          <div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Main Category</div>
+            <div style="font-size: 1.4rem; font-weight: 700; font-family: var(--font-heading); color: var(--accent);" id="statMainCategory">-</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Articles Management Dashboard Table -->
+      <div class="glass-card" style="padding: 2.5rem; overflow: hidden; margin-bottom: 2rem;">
+        <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--text-primary); font-family: var(--font-heading);">Article Catalog</h3>
+        
+        <div style="overflow-x: auto; width: 100%;">
+          <table class="cms-table" style="width: 100%; border-collapse: collapse; text-align: left; min-width: 750px;">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--border); color: var(--text-secondary); font-family: var(--font-heading); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                <th style="padding: 1rem 0.5rem; font-weight: 600; width: 80px;">Cover</th>
+                <th style="padding: 1rem 1rem; font-weight: 600;">Title</th>
+                <th style="padding: 1rem 1rem; font-weight: 600; width: 120px;">Category</th>
+                <th style="padding: 1rem 1rem; font-weight: 600; width: 150px;">Author</th>
+                <th style="padding: 1rem 1rem; font-weight: 600; width: 120px;">Date</th>
+                <th style="padding: 1rem 0.5rem; font-weight: 600; text-align: right; width: 150px;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="cmsTableBody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+
+        <div id="cmsEmptyState" style="display: none; text-align: center; padding: 4rem 0; color: var(--text-muted);">
+          <p style="font-size: 1.3rem; font-family: var(--font-heading); margin-bottom: 1rem;">No articles found in localStorage.</p>
+          <button type="button" class="btn btn-secondary btn-sm" id="resetDefaultsBtn">Reset Default Articles</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Create/Edit Form Modal -->
+  <div class="booking-modal-overlay" id="cmsFormModal">
+    <div class="booking-modal-content glass-card" style="max-width: 650px; max-height: 90vh; overflow-y: auto; padding: 3rem;">
+      <button type="button" class="modal-close-btn" id="closeFormModalBtn">&times;</button>
+      
+      <div class="modal-header" style="margin-bottom: 2rem;">
+        <span class="step-indicator" id="formActionIndicator" style="font-size: 0.8rem; color: var(--accent); font-family: var(--font-heading); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.5rem;">CREATE POST</span>
+        <h3 class="accent-text" id="formTitle" style="font-size: 1.8rem; font-family: var(--font-heading); font-weight: 700; line-height: 1.2;">Add New Blog Article</h3>
+      </div>
+
+      <form id="cmsArticleForm" style="display: flex; flex-direction: column; gap: 1.2rem;">
+        <input type="hidden" id="articleId">
+        
+        <div class="form-group" style="margin-bottom: 0;">
+          <label for="inputTitle">Article Title</label>
+          <input type="text" id="inputTitle" required placeholder="e.g. Scaling Through Operations CRM Integrations">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 0;">
+          <label for="inputSubtitle">Subtitle / Excerpt</label>
+          <input type="text" id="inputSubtitle" required placeholder="A brief summary sentence to show on the index feed cards...">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group" style="margin-bottom: 0;">
+            <label for="selectCategory">Category</label>
+            <select id="selectCategory" required>
+              <option value="Marketing">Marketing</option>
+              <option value="Automation">Automation</option>
+              <option value="Design">Branding &amp; Design</option>
+              <option value="Video">Video Editing</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label for="inputAuthor">Author Name</label>
+            <input type="text" id="inputAuthor" required value="House of Lancers" placeholder="House of Lancers">
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 0;">
+          <label for="inputImage">Cover Image URL</label>
+          <div style="display: flex; gap: 0.5rem;">
+            <input type="url" id="inputImage" required placeholder="https://images.unsplash.com/photo-...">
+            <button type="button" class="btn btn-secondary" id="suggestImgBtn" style="padding: 0.5rem 1rem; font-size: 0.8rem; flex-shrink: 0;" title="Get default premium Unsplash URL">Suggest Cover</button>
+          </div>
+          <span style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.3rem; display: block;">Provide an absolute image URL (e.g. from Unsplash, Pexels, or Freepik).</span>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 0;">
+          <label for="textareaContent">Article Content (Markdown/Text)</label>
+          <textarea id="textareaContent" required rows="8" placeholder="Start typing the article body..." style="width: 100%; padding: 1rem; background-color: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 4px; color: var(--text-primary); font-family: var(--font-body); font-size: 0.95rem; line-height: 1.6; resize: vertical; transition: var(--transition);"></textarea>
+        </div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+          <button type="button" class="btn btn-secondary w-full" id="cancelFormBtn" style="margin-top: 0;">Cancel</button>
+          <button type="submit" class="btn btn-primary w-full" style="margin-top: 0;">Save Article</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="cmsToast" style="position: fixed; bottom: 30px; left: 30px; background: #398C64; color: #FFFFFF; padding: 1rem 2rem; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); font-weight: 600; font-family: var(--font-heading); z-index: 11000; transform: translateY(150px); opacity: 0; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease; display: flex; align-items: center; gap: 0.8rem;">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    <span id="cmsToastMsg">Article Saved Successfully!</span>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <img src="images/logo.png" alt="House Of Lancers Logo" class="logo-img" style="height: 44px; width: auto; display: block;">
+        </a>
+        <p>House Of Lancers is a premium growth partner. We scale brands through high-performing marketing, creative luxury design, custom AI integrations, and operational workflows.</p>
+      </div>
+
+      <div class="footer-links-grid">
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="index.html">Home</a></li>
+            <li class="footer-link-item"><a href="about.html">About Us</a></li>
+            <li class="footer-link-item"><a href="services.html">Our Services</a></li>
+            <li class="footer-link-item"><a href="portfolio.html">Our Portfolio</a></li>
+            <li class="footer-link-item"><a href="blog.html">Blog</a></li>
+            <li class="footer-link-item"><a href="admin.html" style="color: var(--accent); font-weight: bold;">CMS Admin</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Core Services</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="smm.html">Social Media Marketing</a></li>
+            <li class="footer-link-item"><a href="automation.html">Business Automation</a></li>
+            <li class="footer-link-item"><a href="design.html">Creative Designing</a></li>
+            <li class="footer-link-item"><a href="video.html">Video Editing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Contact</h4>
+          <ul class="footer-links" style="color: var(--text-muted); font-size: 0.95rem;">
+            <li style="margin-bottom: 0.8rem;">Vishal Apartment, Navrangpura, Ahmedabad, India</li>
+            <li style="margin-bottom: 0.8rem;">houseoflancers@gmail.com</li>
+            <li style="margin-bottom: 0.8rem;">+91 73831 32301</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2026 House Of Lancers. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Additional CSS overrides for table & forms in light/dark mode -->
+  <style>
+    .cms-table th, .cms-table td {
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      vertical-align: middle;
+    }
+    .cms-table td {
+      padding: 1.2rem 1rem;
+      color: var(--text-secondary);
+    }
+    .cms-table th {
+      padding: 1.2rem 1rem;
+      color: var(--text-primary);
+    }
+    .cms-table tbody tr {
+      transition: background-color 0.2s ease;
+    }
+    .cms-table tbody tr:hover {
+      background-color: rgba(215, 195, 115, 0.02);
+    }
+    html.light-mode .cms-table tbody tr:hover {
+      background-color: rgba(0, 0, 0, 0.01);
+    }
+    .btn-sm {
+      padding: 0.4rem 1rem;
+      font-size: 0.8rem;
+      border-radius: 4px;
+    }
+    .btn-danger {
+      background: transparent;
+      color: #df4747;
+      border: 1px solid rgba(223, 71, 71, 0.2);
+    }
+    .btn-danger:hover {
+      background: #df4747;
+      color: #FFFFFF;
+      border-color: #df4747;
+      box-shadow: 0 5px 15px rgba(223, 71, 71, 0.2);
+      transform: translateY(-2px);
+    }
+  </style>
+
+  <script src="js/main.js"></script>
+
+  <!-- Local CMS Database Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const defaultBlogs = [
+        {
+          id: '1',
+          title: "The Silent Scaling Engine: How Custom AI Agents Automate Operations",
+          subtitle: "Why manual data capture is holding your sales pipeline back and how webhooks can solve it.",
+          author: "Yagnesh Pandya",
+          category: "Automation",
+          date: "June 24, 2026",
+          image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80",
+          content: "Every business starts with spreadsheets, manual updates, and email copy-pasting. But as you scale, this manual labor turns into an operational bottleneck that slows response times and limits margins. By designing custom automated webhooks and routing lead flows directly to AI qualification agents, businesses can qualify incoming traffic in real-time, assigning deals to reps dynamically and cutting response times to under 30 seconds. Automation is not about removing human relationships; it is about building the system that allows your sales team to focus purely on high-intent calls while automation handles the admin chaos."
+        },
+        {
+          id: '2',
+          title: "Branding Beyond Aesthetics: Forging Luxury Brand Trust in Modern Markets",
+          subtitle: "Why consistency, visual weight, and premium typography drive margins more than discounts.",
+          author: "House of Lancers",
+          category: "Design",
+          date: "June 18, 2026",
+          image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80",
+          content: "In a crowded digital marketplace, discount marketing is a race to the bottom. Premium positioning is built on perceived value, trust, and creative consistency. A unified brand identityâ€”from high-end visual systems, corporate pitch decks, and cohesive typography to structured catalog print assetsâ€”communicates authority. Trust is won in details. When your branding looks premium, your margins reflect it, allowing you to scale without relying on constant price cuts. We explore how structuring brand books and maintaining visual clarity across LinkedIn, Instagram, and packaging constructs a luxury brand narrative that commands market value."
+        },
+        {
+          id: '3',
+          title: "Beyond Emojis: Designing High-Retention Video Content for Social Ads",
+          subtitle: "An engineering-based approach to Instagram Reels editing, motion graphics, and audio pacing.",
+          author: "House of Lancers",
+          category: "Marketing",
+          date: "June 10, 2026",
+          image: "https://images.unsplash.com/photo-1574717024453-354056afd6fc?auto=format&fit=crop&w=600&q=80",
+          content: "Hooking a viewer in the first 2 seconds is a science. High-retention video content does not happen by accidentâ€”it relies on precise pacing, structured hooks, custom subtitles, color grading, and motion graphics that constantly refresh focus. By applying dynamic framing edits and utilizing tight sound design markers, brands can increase watch-time retention rates by up to 240%. This guide covers how to story-board marketing creatives, match audio engineering pacing to brand tone, and use paid Meta ads campaigns to scale organic short-form reels to qualified lead streams."
+        }
+      ];
+
+      const unsplashImages = [
+        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=600&q=80"
+      ];
+
+      // Retrieve database
+      const getBlogs = () => {
+        let list = JSON.parse(localStorage.getItem('hol_blogs'));
+        if (!list || list.length === 0) {
+          list = defaultBlogs;
+          localStorage.setItem('hol_blogs', JSON.stringify(list));
+        }
+        return list;
+      };
+
+      const setBlogs = (list) => {
+        localStorage.setItem('hol_blogs', JSON.stringify(list));
+      };
+
+      // Selectors
+      const tableBody = document.getElementById('cmsTableBody');
+      const emptyState = document.getElementById('cmsEmptyState');
+      const createModal = document.getElementById('cmsFormModal');
+      
+      const openCreateBtn = document.getElementById('openCreateModalBtn');
+      const closeFormBtn = document.getElementById('closeFormModalBtn');
+      const cancelFormBtn = document.getElementById('cancelFormBtn');
+      
+      const articleForm = document.getElementById('cmsArticleForm');
+      const inputId = document.getElementById('articleId');
+      const inputTitle = document.getElementById('inputTitle');
+      const inputSubtitle = document.getElementById('inputSubtitle');
+      const selectCategory = document.getElementById('selectCategory');
+      const inputAuthor = document.getElementById('inputAuthor');
+      const inputImage = document.getElementById('inputImage');
+      const textareaContent = document.getElementById('textareaContent');
+      
+      const suggestBtn = document.getElementById('suggestImgBtn');
+      const resetDefaultsBtn = document.getElementById('resetDefaultsBtn');
+      
+      // Stats placeholders
+      const statTotalArticles = document.getElementById('statTotalArticles');
+      const statTotalAuthors = document.getElementById('statTotalAuthors');
+      const statMainCategory = document.getElementById('statMainCategory');
+      
+      // Toast placeholders
+      const toast = document.getElementById('cmsToast');
+      const toastMsg = document.getElementById('cmsToastMsg');
+
+      const showToast = (message) => {
+        toastMsg.innerText = message;
+        toast.style.transform = 'translateY(0)';
+        toast.style.opacity = '1';
+        setTimeout(() => {
+          toast.style.transform = 'translateY(150px)';
+          toast.style.opacity = '0';
+        }, 3000);
+      };
+
+      // Form suggestion cover image
+      suggestBtn.addEventListener('click', () => {
+        const randImg = unsplashImages[Math.floor(Math.random() * unsplashImages.length)];
+        inputImage.value = randImg;
+      });
+
+      // Reset default blogs
+      resetDefaultsBtn.addEventListener('click', () => {
+        setBlogs(defaultBlogs);
+        showToast("Restored Default Articles!");
+        renderDashboard();
+      });
+
+      // Update statistics
+      const updateStats = (blogs) => {
+        statTotalArticles.innerText = blogs.length;
+        
+        const authors = new Set(blogs.map(b => b.author));
+        statTotalAuthors.innerText = authors.size;
+
+        const categories = blogs.map(b => b.category);
+        if (categories.length > 0) {
+          const frequency = {};
+          categories.forEach(c => frequency[c] = (frequency[c] || 0) + 1);
+          let mainCat = '';
+          let maxCount = 0;
+          for (let cat in frequency) {
+            if (frequency[cat] > maxCount) {
+              maxCount = frequency[cat];
+              mainCat = cat;
+            }
+          }
+          statMainCategory.innerText = mainCat;
+        } else {
+          statMainCategory.innerText = "-";
+        }
+      };
+
+      // Open Modal
+      const openModal = (id = null) => {
+        articleForm.reset();
+        
+        if (id) {
+          document.getElementById('formActionIndicator').innerText = "EDIT POST";
+          document.getElementById('formTitle').innerText = "Modify Blog Article";
+          
+          const blogs = getBlogs();
+          const target = blogs.find(b => b.id === id);
+          if (target) {
+            inputId.value = target.id;
+            inputTitle.value = target.title;
+            inputSubtitle.value = target.subtitle;
+            selectCategory.value = target.category;
+            inputAuthor.value = target.author;
+            inputImage.value = target.image;
+            textareaContent.value = target.content;
+          }
+        } else {
+          document.getElementById('formActionIndicator').innerText = "CREATE POST";
+          document.getElementById('formTitle').innerText = "Add New Blog Article";
+          inputId.value = '';
+          inputAuthor.value = 'House of Lancers';
+        }
+        
+        createModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      };
+
+      const closeModal = () => {
+        createModal.classList.remove('active');
+        document.body.style.overflow = '';
+      };
+
+      openCreateBtn.addEventListener('click', () => openModal());
+      closeFormBtn.addEventListener('click', closeModal);
+      cancelFormBtn.addEventListener('click', closeModal);
+
+      // Save / Submit
+      articleForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const id = inputId.value;
+        const title = inputTitle.value.trim();
+        const subtitle = inputSubtitle.value.trim();
+        const category = selectCategory.value;
+        const author = inputAuthor.value.trim();
+        const image = inputImage.value.trim();
+        const content = textareaContent.value.trim();
+        
+        const blogs = getBlogs();
+        
+        if (id) {
+          // Edit mode
+          const idx = blogs.findIndex(b => b.id === id);
+          if (idx !== -1) {
+            blogs[idx] = {
+              ...blogs[idx],
+              title,
+              subtitle,
+              category,
+              author,
+              image,
+              content
+            };
+            setBlogs(blogs);
+            showToast("Article Updated Successfully!");
+          }
+        } else {
+          // Create mode
+          const newBlog = {
+            id: Date.now().toString(),
+            title,
+            subtitle,
+            category,
+            author,
+            date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+            image,
+            content
+          };
+          blogs.unshift(newBlog);
+          setBlogs(blogs);
+          showToast("New Article Published!");
+        }
+        
+        closeModal();
+        renderDashboard();
+      });
+
+      // Delete article
+      window.deleteArticle = (id) => {
+        if (confirm("Are you sure you want to delete this article? This action cannot be undone.")) {
+          let blogs = getBlogs();
+          blogs = blogs.filter(b => b.id !== id);
+          setBlogs(blogs);
+          showToast("Article Deleted.");
+          renderDashboard();
+        }
+      };
+
+      // Edit article
+      window.editArticle = (id) => {
+        openModal(id);
+      };
+
+      // Render catalog table
+      const renderDashboard = () => {
+        const blogs = getBlogs();
+        tableBody.innerHTML = '';
+        
+        updateStats(blogs);
+
+        if (blogs.length === 0) {
+          document.querySelector('.cms-table').style.display = 'none';
+          emptyState.style.display = 'block';
+        } else {
+          document.querySelector('.cms-table').style.display = 'table';
+          emptyState.style.display = 'none';
+          
+          blogs.forEach(b => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+              <td style="padding: 1.2rem 0.5rem; text-align: center;">
+                <div style="background-image: url('${b.image}'); background-size: cover; background-position: center; width: 50px; height: 50px; border-radius: 4px; border: 1px solid var(--border);"></div>
+              </td>
+              <td style="padding: 1.2rem 1rem; font-weight: 600; color: var(--text-primary);">
+                ${b.title}
+                <span style="display: block; font-size: 0.75rem; color: var(--text-muted); font-weight: 400; margin-top: 0.2rem; max-width: 400px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${b.subtitle}</span>
+              </td>
+              <td style="padding: 1.2rem 1rem; color: var(--accent); font-family: var(--font-heading); font-weight: 700; font-size: 0.8rem; text-transform: uppercase;">
+                ${b.category}
+              </td>
+              <td style="padding: 1.2rem 1rem;">
+                By ${b.author}
+              </td>
+              <td style="padding: 1.2rem 1rem; font-size: 0.85rem; color: var(--text-muted);">
+                ${b.date}
+              </td>
+              <td style="padding: 1.2rem 0.5rem; text-align: right;">
+                <div style="display: flex; gap: 0.5rem; justify-content: flex-end;">
+                  <button type="button" class="btn btn-secondary btn-sm" onclick="editArticle('${b.id}')">Edit</button>
+                  <button type="button" class="btn btn-danger btn-sm" onclick="deleteArticle('${b.id}')">Delete</button>
+                </div>
+              </td>
+            `;
+            tableBody.appendChild(tr);
+          });
+        }
+      };
+
+      // Initial Dashboard Render
+      renderDashboard();
+    });
+  </script>
+</body>
+</html>

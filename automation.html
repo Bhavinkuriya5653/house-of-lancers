@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Futuristic AI-powered business workflows, CRM integrations, WhatsApp API automation, and interactive data dashboards by House Of Lancers.">
+  <title>Business Automation &amp; AI CRM | House Of Lancers</title>
+  
+  <script>
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+      document.documentElement.classList.add('light-mode');
+    }
+  </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+  <!-- Custom Cursor & Noise Overlay -->
+  <div class="custom-cursor"></div>
+  <div class="noise-overlay"></div>
+
+  <!-- Header Section -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="House Of Lancers Logo" class="logo-img" style="height: 48px; width: auto; display: block;">
+      </a>
+      
+      <button class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+        <li class="nav-item dropdown">
+          <a href="services.html" class="nav-link">Services</a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item"><a href="smm.html">Social Media Marketing</a></li>
+            <li class="dropdown-item"><a href="automation.html">Business Automation</a></li>
+            <li class="dropdown-item"><a href="design.html">Creative Designing</a></li>
+            <li class="dropdown-item"><a href="video.html">Video Editing</a></li>
+            <li class="dropdown-item" style="border-top: 1px solid rgba(215, 195, 115, 0.1);"><a href="services.html">All 15 Services</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a href="portfolio.html" class="nav-link">Our Work</a></li>
+        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        <li class="nav-item">
+          <button class="theme-toggle" aria-label="Toggle Theme"></button>
+        </li>
+        <li class="nav-item" style="margin-left: 0.5rem;">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSca13hRUp14_aPqM2UjQ_M1jSXeE0o-gK9Z7NqT0_placeholder/viewform" target="_blank" class="btn btn-primary book-strategy-trigger">Book Strategy Call</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="section automation-hero" style="padding-top: 12rem; overflow: hidden; background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);">
+    <div class="ambient-glow" style="top: 15%; left: 30%;"></div>
+    
+    <!-- Abstract Vector -->
+    <svg class="abstract-vector abstract-line-1" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="40" stroke-dasharray="4 4"/>
+      <line x1="0" y1="50" x2="100" y2="50"/>
+      <line x1="50" y1="0" x2="50" y2="100"/>
+    </svg>
+
+    <div class="container" style="max-width: 900px; text-align: center;">
+      <span class="section-tag">AI &amp; Workflows</span>
+      <h1 style="font-size: 3.5rem; margin-bottom: 1.5rem;" class="text-gradient">Automate Your Business. Multiply Productivity.</h1>
+      <p style="font-size: 1.2rem; color: var(--text-secondary);">
+        Eliminate manual bottlenecks. We build automated CRM networks, AI-assisted lead management, and cross-application pipelines that operate continuously.
+      </p>
+    </div>
+  </section>
+
+  <!-- Interactive Workflow Diagram Section -->
+  <section class="section" style="border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Live System Flow</span>
+        <h2 class="section-title">Visualizing The Automation Engine</h2>
+        <p class="section-subtitle">How a lead routes through our configured workflows instantly without human intervention.</p>
+      </div>
+
+      <!-- Custom Vertical Pulsing SVG Diagram -->
+      <div class="glass-card" style="padding: 4rem 2rem; background: rgba(var(--bg-secondary), 0.8); position: relative; overflow: hidden;">
+        <div id="automationFlowVertical" style="display: flex; flex-direction: column; gap: 3rem; position: relative; max-width: 900px; margin: 0 auto;">
+          
+          <!-- Animated connecting paths (Interactive & precise vertical timeline) -->
+          <svg style="position: absolute; top: 0; left: 25px; width: 30px; height: 100%; pointer-events: none; z-index: 1; overflow: visible;">
+            <!-- Background faint loop path -->
+            <path id="flowBgLoopPath" d="" fill="none" stroke="rgba(215, 195, 115, 0.15)" stroke-width="2" stroke-dasharray="8 6" />
+            <!-- Return path line (from Node 5 to Node 1) -->
+            <path id="flowReturnLine" d="" fill="none" stroke="var(--accent)" stroke-width="2.5" style="opacity: 0; transition: opacity 0.5s ease; filter: drop-shadow(0 0 5px var(--accent));" />
+            <!-- Active progress solid line -->
+            <line id="flowProgressLine" x1="15" y1="40" x2="15" y2="40" stroke="var(--accent)" stroke-width="3" style="transition: y2 0.8s cubic-bezier(0.16, 1, 0.3, 1);" />
+            <!-- Glowing tracking circle -->
+            <circle id="flowProgressCircle" cx="15" cy="40" r="6" fill="var(--accent)" style="transition: cy 0.8s cubic-bezier(0.16, 1, 0.3, 1); filter: drop-shadow(0 0 8px var(--accent));" />
+          </svg>
+
+          <!-- Node 1: Lead -->
+          <div class="flow-step-container active" data-step="0" style="display: flex; gap: 2.5rem; align-items: flex-start; z-index: 2; cursor: pointer;">
+            <div class="node-circle" style="width: 80px; height: 80px; flex-shrink: 0; border-radius: 50%; background-color: var(--bg-primary); border: 2px solid var(--accent); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(215,195,115,0.15); position: relative; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);">
+              <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#d7c373" stroke-width="2">
+                <polyline points="4 17 9 17 10 19 14 19 15 17 20 17" />
+                <path d="M20 13V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8" />
+              </svg>
+              <!-- Small pulsing dot -->
+              <span class="pulse-dot" style="position: absolute; top: 0; right: 0; width: 12px; height: 12px; border-radius: 50%; background-color: var(--text-primary); border: 2px solid var(--bg-primary);"></span>
+            </div>
+            <div class="flow-step-card glass-card" style="padding: 2rem; flex-grow: 1; text-align: left; transition: var(--transition);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
+                <h4 style="color: var(--text-primary); font-size: 1.3rem; font-family: var(--font-heading); font-weight: 700;">1. Lead Captured</h4>
+                <span style="background: rgba(215, 195, 115, 0.1); color: var(--accent); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; font-family: var(--font-heading);">Latency: 0.2s</span>
+              </div>
+              <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+                Lead enters the system through Website, Landing Page, WhatsApp, Email, Form, or API integration, avoiding manual data entry and preventing leakage.
+              </p>
+              <div style="font-size: 0.8rem; color: var(--text-muted); display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;">
+                <span>Integrations: Meta Webhooks, WhatsApp, Email, APIs</span>
+                <span>•</span>
+                <span>Trigger: Form Submission</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Node 2: CRM -->
+          <div class="flow-step-container" data-step="1" style="display: flex; gap: 2.5rem; align-items: flex-start; z-index: 2; cursor: pointer;">
+            <div class="node-circle" style="width: 80px; height: 80px; flex-shrink: 0; border-radius: 50%; background-color: var(--bg-primary); border: 2px solid var(--accent); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(215,195,115,0.15); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);">
+              <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#d7c373" stroke-width="2">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </div>
+            <div class="flow-step-card glass-card" style="padding: 2rem; flex-grow: 1; text-align: left; transition: var(--transition);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
+                <h4 style="color: var(--text-primary); font-size: 1.3rem; font-family: var(--font-heading); font-weight: 700;">2. Smart Validation &amp; Classification</h4>
+                <span style="background: rgba(215, 195, 115, 0.1); color: var(--accent); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; font-family: var(--font-heading);">Processing: AI Enriched</span>
+              </div>
+              <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+                The automation engine validates lead information and categorizes it based on predefined criteria such as location, product interest, industry, source, or priority.
+              </p>
+              <div style="font-size: 0.8rem; color: var(--text-muted); display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;">
+                <span>Integrations: Data Enrichment, HubSpot, AI Router</span>
+                <span>•</span>
+                <span>Trigger: Routing Engine</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Node 3: WhatsApp -->
+          <div class="flow-step-container" data-step="2" style="display: flex; gap: 2.5rem; align-items: flex-start; z-index: 2; cursor: pointer;">
+            <div class="node-circle" style="width: 80px; height: 80px; flex-shrink: 0; border-radius: 50%; background-color: var(--bg-primary); border: 2px solid var(--accent); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(215,195,115,0.15); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);">
+              <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#d7c373" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+              </svg>
+            </div>
+            <div class="flow-step-card glass-card" style="padding: 2rem; flex-grow: 1; text-align: left; transition: var(--transition);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
+                <h4 style="color: var(--text-primary); font-size: 1.3rem; font-family: var(--font-heading); font-weight: 700;">3. Automated Routing</h4>
+                <span style="background: rgba(215, 195, 115, 0.1); color: var(--accent); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; font-family: var(--font-heading);">Routing: Instant</span>
+              </div>
+              <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+                Lead is instantly assigned to the right sales representative, department, branch, or workflow based on configured business rules.
+              </p>
+              <div style="font-size: 0.8rem; color: var(--text-muted); display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;">
+                <span>Integrations: Routing Engine, Active Reps CRM</span>
+                <span>•</span>
+                <span>Trigger: WhatsApp Router</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Node 4: Sales Team -->
+          <div class="flow-step-container" data-step="3" style="display: flex; gap: 2.5rem; align-items: flex-start; z-index: 2; cursor: pointer;">
+            <div class="node-circle" style="width: 80px; height: 80px; flex-shrink: 0; border-radius: 50%; background-color: var(--bg-primary); border: 2px solid var(--accent); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(215,195,115,0.15); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);">
+              <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#d7c373" stroke-width="2">
+                <path d="M4.5 16.5c-1.5 1.5-2.5 3.5-2.5 5.5C4 22 6 21 7.5 19.5" />
+                <path d="M12 2C12 2 7 7 7 12s5 7 5 7" />
+                <path d="M22 2s-5 5-5 10c0 5 5 7 5 7" />
+                <path d="M12 19c0 0 2-2 5-2s5 2 5 2" />
+              </svg>
+            </div>
+            <div class="flow-step-card glass-card" style="padding: 2rem; flex-grow: 1; text-align: left; transition: var(--transition);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
+                <h4 style="color: var(--text-primary); font-size: 1.3rem; font-family: var(--font-heading); font-weight: 700;">4. Instant Actions Triggered</h4>
+                <span style="background: rgba(215, 195, 115, 0.1); color: var(--accent); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; font-family: var(--font-heading);">Tasks: Simultaneous</span>
+              </div>
+              <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+                Automated tasks are executed simultaneously: Lead owner notification, Follow-up task creation, Email/WhatsApp acknowledgment, CRM record creation, and Approval or escalation triggers (if required).
+              </p>
+              <div style="font-size: 0.8rem; color: var(--text-muted); display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;">
+                <span>Integrations: Email API, WhatsApp API, Task Scheduler</span>
+                <span>•</span>
+                <span>Trigger: Cal API Sync</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Node 5: Dashboard -->
+          <div class="flow-step-container" data-step="4" style="display: flex; gap: 2.5rem; align-items: flex-start; z-index: 2; cursor: pointer;">
+            <div class="node-circle" style="width: 80px; height: 80px; flex-shrink: 0; border-radius: 50%; background-color: var(--bg-primary); border: 2px solid var(--accent); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(215,195,115,0.15); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);">
+              <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#d7c373" stroke-width="2">
+                <line x1="18" y1="20" x2="18" y2="10" />
+                <line x1="12" y1="20" x2="12" y2="4" />
+                <line x1="6" y1="20" x2="6" y2="14" />
+              </svg>
+            </div>
+            <div class="flow-step-card glass-card" style="padding: 2rem; flex-grow: 1; text-align: left; transition: var(--transition);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
+                <h4 style="color: var(--text-primary); font-size: 1.3rem; font-family: var(--font-heading); font-weight: 700;">5. Real-Time Tracking &amp; Progression</h4>
+                <span style="background: rgba(215, 195, 115, 0.1); color: var(--accent); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; font-family: var(--font-heading);">Closed Loop: Active</span>
+              </div>
+              <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+                Every activity is tracked automatically with status updates, reminders, SLA monitoring, and dashboard visibility until conversion or closure.
+              </p>
+              <div style="font-size: 0.8rem; color: var(--text-muted); display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;">
+                <span>Integrations: Looker Studio, Analytics, SLA Monitors</span>
+                <span>•</span>
+                <span>Trigger: Closed Loop Reporting</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Services & Core AI Impact -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Feature Scope</span>
+        <h2 class="section-title">Our Automation Core</h2>
+        <p class="section-subtitle">We deploy custom integrations across these 12 critical functional operational divisions.</p>
+      </div>
+
+      <div class="grid-3" style="margin-bottom: 4rem;">
+        <div class="glass-card" style="padding: 2rem;">
+          <h3 class="accent-text" style="font-size: 1.25rem; margin-bottom: 0.8rem;">1. CRM Setup &amp; Trigger Routing</h3>
+          <p style="font-size: 0.9rem;">Lead data is structured in HubSpot or Zoho. Contact owners are automatically assigned based on agent capacity.</p>
+        </div>
+        <div class="glass-card" style="padding: 2rem;">
+          <h3 class="accent-text" style="font-size: 1.25rem; margin-bottom: 0.8rem;">2. WhatsApp API Integration</h3>
+          <p style="font-size: 0.9rem;">Connect verified WhatsApp API keys to trigger instant personalized welcome guides as soon as forms submit.</p>
+        </div>
+        <div class="glass-card" style="padding: 2rem;">
+          <h3 class="accent-text" style="font-size: 1.25rem; margin-bottom: 0.8rem;">3. Automated Lead Capture</h3>
+          <p style="font-size: 0.9rem;">Map landing pages, Facebook lead forms, and Google forms directly to databases without sheet CSV imports.</p>
+        </div>
+        <div class="glass-card" style="padding: 2rem;">
+          <h3 class="accent-text" style="font-size: 1.25rem; margin-bottom: 0.8rem;">4. Pipeline Progression Triggers</h3>
+          <p style="font-size: 0.9rem;">Automatically update lead status tags and schedule notifications when tasks change states.</p>
+        </div>
+        <div class="glass-card" style="padding: 2rem;">
+          <h3 class="accent-text" style="font-size: 1.25rem; margin-bottom: 0.8rem;">5. AI Conversational Chatbots</h3>
+          <p style="font-size: 0.9rem;">Deploy trained AI agents to handle common operational queries and qualify incoming prospects automatically.</p>
+        </div>
+        <div class="glass-card" style="padding: 2rem;">
+          <h3 class="accent-text" style="font-size: 1.25rem; margin-bottom: 0.8rem;">6. Continuous Follow-up Chains</h3>
+          <p style="font-size: 0.9rem;">Schedule SMS, WhatsApp, and email sequences that pause automatically once a prospect books a calendar call.</p>
+        </div>
+        <div class="glass-card" style="padding: 2rem;">
+          <h3 class="accent-text" style="font-size: 1.25rem; margin-bottom: 0.8rem;">7. Invoice &amp; Payment Routing</h3>
+          <p style="font-size: 0.9rem;">Generate PDF invoices automatically via Razorpay or Stripe, triggering instant confirmation WhatsApp receipts.</p>
+        </div>
+        <div class="glass-card" style="padding: 2rem;">
+          <h3 class="accent-text" style="font-size: 1.25rem; margin-bottom: 0.8rem;">8. Real-time Reporting Dashboards</h3>
+          <p style="font-size: 0.9rem;">Sync data systems into a luxury live dashboard to view sales pipelines, cost metrics, and agent response times.</p>
+        </div>
+        <div class="glass-card" style="padding: 2rem;">
+          <h3 class="accent-text" style="font-size: 1.25rem; margin-bottom: 0.8rem;">9. B2B Internal Workflows</h3>
+          <p style="font-size: 0.9rem;">Sync project management platforms like ClickUp or Slack to generate client project channels automatically.</p>
+        </div>
+      </div>
+      
+      <!-- AI efficiency explanation (UPDATED Lower Metrics) -->
+      <div class="glass-card" style="display: flex; gap: 3rem; align-items: center; flex-wrap: wrap; padding: 4rem;">
+        <div style="flex: 1; min-width: 300px;">
+          <span class="section-tag">Efficiency Math</span>
+          <h2 style="color: var(--text-primary); font-size: 2.2rem; margin: 1rem 0;">How Automation Redeems Idle Capital</h2>
+          <p style="margin-bottom: 1.5rem;">
+            When a sales lead sits unaddressed for over 15 minutes, the likelihood of contacting them drops by 390%. 
+          </p>
+          <p style="color: var(--text-secondary);">
+            Our automation engines reduce lead response latency from hours to seconds. By eliminating manual file transfers, email notifications, and schedule planning, you redeem up to 40 hours of admin work every week.
+          </p>
+        </div>
+        <div class="grid-2" style="flex: 1; min-width: 300px; gap: 1.5rem;">
+          <div style="background: rgba(var(--accent-rgb), 0.02); border: 1px solid var(--border); padding: 1.5rem; border-radius: 4px; text-align: center;">
+            <div style="font-size: 3rem; font-weight: 800; font-family: var(--font-heading); color: var(--accent);">5 Sec</div>
+            <p style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: var(--text-primary); margin-top: 0.5rem;">Lead Response Lag</p>
+          </div>
+          <div style="background: rgba(var(--accent-rgb), 0.02); border: 1px solid var(--border); padding: 1.5rem; border-radius: 4px; text-align: center;">
+            <div style="font-size: 3rem; font-weight: 800; font-family: var(--font-heading); color: var(--accent);">100%</div>
+            <p style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: var(--text-primary); margin-top: 0.5rem;">Zero Human Errors</p>
+          </div>
+          <div style="background: rgba(var(--accent-rgb), 0.02); border: 1px solid var(--border); padding: 1.5rem; border-radius: 4px; text-align: center;">
+            <div style="font-size: 3rem; font-weight: 800; font-family: var(--font-heading); color: var(--accent);">₹65K</div>
+            <p style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: var(--text-primary); margin-top: 0.5rem;">Saved Monthly in Admins</p>
+          </div>
+          <div style="background: rgba(var(--accent-rgb), 0.02); border: 1px solid var(--border); padding: 1.5rem; border-radius: 4px; text-align: center;">
+            <div style="font-size: 3rem; font-weight: 800; font-family: var(--font-heading); color: var(--accent);">3X</div>
+            <p style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: var(--text-primary); margin-top: 0.5rem;">Sales rep output increase</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Strategy Booking Footer Teaser -->
+  <section class="section">
+    <div class="container" style="text-align: center; max-width: 800px;">
+      <h2 style="font-size: 2.5rem; color: var(--text-primary); margin-bottom: 1.5rem;">Map Your Internal Workflows</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 2.5rem;">Book a strategy call to map out your current business systems and receive a custom automation diagram detailing optimization opportunities.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSca13hRUp14_aPqM2UjQ_M1jSXeE0o-gK9Z7NqT0_placeholder/viewform" target="_blank" class="btn btn-primary book-strategy-trigger">Request Custom Flow Map</a>
+    </div>
+  </section>
+
+  <!-- WhatsApp Floating Widget -->
+  <div class="whatsapp-float">
+    <svg viewBox="0 0 24 24">
+      <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.333 4.982L2 22l5.233-1.371a9.994 9.994 0 004.78 1.217h.004c5.502 0 9.981-4.479 9.982-9.984A9.987 9.987 0 0012.012 2zm4.7 13.999c-.207.586-1.203 1.14-1.662 1.205-.418.06-1.06.14-2.9-0.62-2.35-.97-3.83-3.34-3.95-3.5-0.11-.16-0.96-1.27-0.96-2.43 0-1.15.6-1.72.82-1.95.2-.23.47-.29.62-.29.15 0 .3 0 .43.01.14 0 .32-.05.5.38.19.46.65 1.58.71 1.7.06.12.1.26.02.43-.08.17-.16.27-.3.43-.15.16-.31.36-.44.48-.15.14-.3.29-.13.58.17.29.76 1.25 1.63 2.03.1.09.2.14.3.17.3.11.58.05.8-.02.2-.06.62-.25.71-.5.09-.25.09-.47.06-.51-.03-.05-.12-.08-.25-.14-1.3-.06-1.53-.13-1.77-.22-.09-.03-.16-.05-.23.06-.24.36-.6.76-.74.92-.14.16-.27.17-.5.06a8.88 8.88 0 01-2.92-1.8 9.9 9.9 0 01-2.02-2.52c-.17-.29-.02-.45.13-.6.13-.13.3-.35.45-.52.12-.17.17-.29.26-.48.09-.2.04-.37-.02-.5-.06-.13-.5-1.2-.69-1.66-.18-.44-.37-.38-.5-.39h-.43c-.15 0-.39.06-.6.29a3.29 3.29 0 00-1.03 2.45c0 1.55.97 3.05 1.13 3.26.17.21 2.46 3.76 5.96 5.27.83.36 1.48.57 1.99.73.83.26 1.59.22 2.19.14.67-.1 2.06-.84 2.35-1.66z"/>
+    </svg>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <img src="images/logo.png" alt="House Of Lancers Logo" class="logo-img" style="height: 44px; width: auto; display: block;">
+        </a>
+        <p>House Of Lancers is a premium growth partner. We scale brands through high-performing marketing, creative luxury design, custom AI integrations, and operational workflows.</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/house_of_lancers/" class="social-link" target="_blank" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/house-of-lancers/" class="social-link" target="_blank" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+          <a href="https://twitter.com/HouseOfLancers" class="social-link" target="_blank" aria-label="Twitter">
+            <svg viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+          </a>
+          <a href="https://medium.com/@houseoflancers" class="social-link" target="_blank" aria-label="Medium">
+            <svg viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-links-grid">
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="index.html">Home</a></li>
+            <li class="footer-link-item"><a href="about.html">About Us</a></li>
+            <li class="footer-link-item"><a href="services.html">Our Services</a></li>
+            <li class="footer-link-item"><a href="portfolio.html">Our Portfolio</a></li>
+            <li class="footer-link-item"><a href="admin.html" style="color: var(--accent); font-weight: bold;">CMS Admin</a></li>
+            <li class="footer-link-item"><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Core Services</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="smm.html">Social Media Marketing</a></li>
+            <li class="footer-link-item"><a href="automation.html">Business Automation</a></li>
+            <li class="footer-link-item"><a href="design.html">Creative Designing</a></li>
+            <li class="footer-link-item"><a href="video.html">Video Editing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Contact</h4>
+          <ul class="footer-links" style="color: var(--text-muted); font-size: 0.95rem;">
+            <li style="margin-bottom: 0.8rem;">Vishal Apartment, Navrangpura, Ahmedabad, India</li>
+            <li style="margin-bottom: 0.8rem;">houseoflancers@gmail.com</li>
+            <li style="margin-bottom: 0.8rem;">+91 73831 32301</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2026 House Of Lancers. All Rights Reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="contact.html">Terms of Service</a>
+        <a href="contact.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    
+    gsap.from('.automation-hero h1, .automation-hero p', {
+      opacity: 0,
+      y: 30,
+      duration: 1,
+      stagger: 0.2,
+      ease: 'power3.out'
+    });
+
+    // Animate the vertical timeline items immediately on load for maximum reliability and wow factor
+    gsap.from('#automationFlowVertical .flow-step-container', {
+      x: -40,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.15,
+      ease: 'power3.out',
+      onComplete: () => {
+        // Recalculate and lock coordinates after entrance completes
+        if (typeof cacheCoords === 'function') {
+          cacheCoords();
+          // Trigger initial scroll alignment
+          if (typeof scrollTriggerInstance !== 'undefined' && scrollTriggerInstance) {
+            updateTimelineScroll(scrollTriggerInstance.progress);
+          } else {
+            updateTimelineScroll(0);
+          }
+        }
+      }
+    });
+
+    // --- INTERACTIVE DIAGRAM FLOW LOGIC ---
+    let cacheCoords, updateTimelineScroll, scrollTriggerInstance;
+
+    const initTimeline = () => {
+      // Inject vertical active styles dynamically
+      const style = document.createElement('style');
+      style.innerHTML = `
+        #automationFlowVertical .flow-step-container {
+          transition: opacity 0.4s ease, transform 0.4s ease;
+          opacity: 0.6;
+        }
+        #automationFlowVertical .flow-step-container.active {
+          opacity: 1;
+        }
+        #automationFlowVertical .flow-step-container .flow-step-card {
+          border: 1px solid var(--border);
+          box-shadow: 0 10px 30px var(--card-shadow);
+        }
+        #automationFlowVertical .flow-step-container.active .flow-step-card {
+          border-color: var(--accent) !important;
+          box-shadow: 0 15px 40px rgba(var(--accent-rgb), 0.15) !important;
+          background: rgba(var(--bg-secondary), 0.95);
+        }
+        #automationFlowVertical .flow-step-container .node-circle {
+          border: 2px solid var(--border) !important;
+          transition: all 0.4s ease;
+        }
+        #automationFlowVertical .flow-step-container.active .node-circle {
+          border-color: var(--accent) !important;
+          transform: scale(1.12);
+          box-shadow: 0 0 25px rgba(var(--accent-rgb), 0.35) !important;
+        }
+        html.light-mode #automationFlowVertical .flow-step-container.active .flow-step-card {
+          border-color: #398C64 !important;
+          box-shadow: 0 15px 40px rgba(57, 140, 100, 0.12) !important;
+        }
+        html.light-mode #automationFlowVertical .flow-step-container.active .node-circle {
+          border-color: #398C64 !important;
+          box-shadow: 0 0 25px rgba(57, 140, 100, 0.2) !important;
+        }
+        html.light-mode #flowProgressLine {
+          stroke: #398C64 !important;
+        }
+        html.light-mode #flowProgressCircle {
+          fill: #398C64 !important;
+        }
+        html.light-mode #flowReturnLine {
+          stroke: #398C64 !important;
+          filter: drop-shadow(0 0 5px rgba(57, 140, 100, 0.5)) !important;
+        }
+      `;
+      document.head.appendChild(style);
+
+      const stepsContainers = document.querySelectorAll('#automationFlowVertical .flow-step-container');
+      const progressLine = document.getElementById('flowProgressLine');
+      const progressCircle = document.getElementById('flowProgressCircle');
+      const verticalContainer = document.getElementById('automationFlowVertical');
+      
+      let cachedCoords = [];
+
+      cacheCoords = () => {
+        if (!verticalContainer) return;
+        cachedCoords = [];
+        stepsContainers.forEach((container) => {
+          const activeNode = container.querySelector('.node-circle');
+          const containerRect = verticalContainer.getBoundingClientRect();
+          const nodeRect = activeNode.getBoundingClientRect();
+          
+          const relativeY = (nodeRect.top + nodeRect.height / 2) - containerRect.top;
+          cachedCoords.push(relativeY);
+        });
+
+        // Update the loop paths dynamically based on actual node center coordinates!
+        if (cachedCoords.length > 0) {
+          const startY = cachedCoords[0];
+          const endY = cachedCoords[cachedCoords.length - 1];
+          
+          const bgLoopPath = document.getElementById('flowBgLoopPath');
+          const returnPath = document.getElementById('flowReturnLine');
+          
+          // Draw loop line down from Node 1 to Node 5, curves left at bottom, runs up at x = -45, and curves right back into Node 1
+          const pathD = `M 15 ${startY} V ${endY} Q -45 ${endY} -45 ${endY - 60} V ${startY + 60} Q -45 ${startY} 15 ${startY}`;
+          
+          if (bgLoopPath) bgLoopPath.setAttribute('d', pathD);
+          if (returnPath) returnPath.setAttribute('d', pathD);
+        }
+      };
+
+      updateTimelineScroll = (progress) => {
+        if (cachedCoords.length === 0) return;
+        
+        const startY = cachedCoords[0];
+        const endY = cachedCoords[cachedCoords.length - 1];
+        const currentY = startY + progress * (endY - startY);
+        
+        if (progressLine) {
+          progressLine.setAttribute('y1', startY);
+          progressLine.setAttribute('y2', currentY);
+        }
+        if (progressCircle) {
+          progressCircle.setAttribute('cy', currentY);
+        }
+
+        // Return path glows when progress is near 100%
+        const returnPath = document.getElementById('flowReturnLine');
+        if (returnPath) {
+          if (progress > 0.92) {
+            returnPath.style.opacity = '1';
+          } else {
+            returnPath.style.opacity = '0';
+          }
+        }
+        
+        // Determine active index
+        let activeIdx = 0;
+        for (let i = 0; i < cachedCoords.length; i++) {
+          if (currentY >= cachedCoords[i] - 15) {
+            activeIdx = i;
+          }
+        }
+        
+        stepsContainers.forEach((container, idx) => {
+          if (idx === activeIdx) {
+            container.classList.add('active');
+          } else {
+            container.classList.remove('active');
+          }
+        });
+      };
+
+      // Add click event handlers to scroll the page smoothly
+      stepsContainers.forEach((container) => {
+        container.addEventListener('click', () => {
+          container.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+          });
+        });
+      });
+
+      // Recalculate coordinates on window resize to ensure timeline line stays accurate
+      window.addEventListener('resize', () => {
+        cacheCoords();
+        if (scrollTriggerInstance) {
+          updateTimelineScroll(scrollTriggerInstance.progress);
+        }
+      });
+
+      // Setup ScrollTrigger to bind timeline progress to scroll position (Adjusted start/end for 100% completion)
+      scrollTriggerInstance = ScrollTrigger.create({
+        trigger: '#automationFlowVertical',
+        start: 'top 65%',
+        end: 'bottom 85%',
+        scrub: 0.5,
+        onUpdate: (self) => {
+          updateTimelineScroll(self.progress);
+        }
+      });
+
+      // Initial coordinates caching
+      cacheCoords();
+      updateTimelineScroll(0);
+      
+      // Secondary deferred alignment
+      setTimeout(() => {
+        cacheCoords();
+        updateTimelineScroll(scrollTriggerInstance ? scrollTriggerInstance.progress : 0);
+      }, 150);
+    };
+
+    // Safe execution checking readyState to prevent DOMContentLoaded race conditions
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initTimeline);
+    } else {
+      initTimeline();
+    }
+  </script>
+</body>
+</html>

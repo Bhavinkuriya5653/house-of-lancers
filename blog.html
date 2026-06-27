@@ -1,0 +1,412 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Read our latest growth insights, social media strategies, and workflow automation guides on the House Of Lancers blog.">
+  <title>Insights &amp; Strategy Blog | House Of Lancers</title>
+  
+  <script>
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+      document.documentElement.classList.add('light-mode');
+    }
+  </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+  <!-- Custom Cursor & Noise Overlay -->
+  <div class="custom-cursor"></div>
+  <div class="noise-overlay"></div>
+
+  <!-- Header Section -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="House Of Lancers Logo" class="logo-img" style="height: 48px; width: auto; display: block;">
+      </a>
+      
+      <button class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+        <li class="nav-item dropdown">
+          <a href="services.html" class="nav-link">Services</a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item"><a href="smm.html">Social Media Marketing</a></li>
+            <li class="dropdown-item"><a href="automation.html">Business Automation</a></li>
+            <li class="dropdown-item"><a href="design.html">Creative Designing</a></li>
+            <li class="dropdown-item"><a href="video.html">Video Editing</a></li>
+            <li class="dropdown-item" style="border-top: 1px solid rgba(215, 195, 115, 0.1);"><a href="services.html">All 15 Services</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a href="portfolio.html" class="nav-link">Our Work</a></li>
+        <li class="nav-item"><a href="blog.html" class="nav-link active">Blog</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        <li class="nav-item">
+          <button class="theme-toggle" aria-label="Toggle Theme"></button>
+        </li>
+        <li class="nav-item" style="margin-left: 0.5rem;">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSca13hRUp14_aPqM2UjQ_M1jSXeE0o-gK9Z7NqT0_placeholder/viewform" target="_blank" class="btn btn-primary book-strategy-trigger">Book Strategy Call</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="section blog-hero" style="padding-top: 12rem; overflow: hidden; background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);">
+    <div class="ambient-glow" style="top: 20%; left: 30%;"></div>
+    
+    <!-- Abstract Vector -->
+    <svg class="abstract-vector abstract-line-1" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="40" stroke-dasharray="4 4"/>
+      <line x1="0" y1="50" x2="100" y2="50"/>
+      <line x1="50" y1="0" x2="50" y2="100"/>
+    </svg>
+
+    <div class="container" style="max-width: 900px; text-align: center; position: relative; z-index: 5;">
+      <span class="section-tag">Insights &amp; Strategies</span>
+      <h1 style="font-size: 3.5rem; margin-bottom: 1.5rem;" class="text-gradient">The Lancers Ledger</h1>
+      <p style="font-size: 1.2rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 3rem;">
+        Expert insights on operational efficiency, luxury branding metrics, AI agents, and conversion-focused paid advertising.
+      </p>
+
+      <!-- Search & Filters Container -->
+      <div style="max-width: 650px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem;">
+        <div style="position: relative;">
+          <input type="text" id="blogSearch" placeholder="Search articles by title or keyword..." style="width: 100%; padding: 1rem 1.5rem; padding-left: 3rem; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 4px; color: var(--text-primary); font-family: var(--font-body); font-size: 1rem; outline: none; transition: var(--transition-fast);">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--text-muted)" stroke-width="2.5" style="position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%);">
+            <circle cx="11" cy="11" r="8" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35" />
+          </svg>
+        </div>
+
+        <div class="blog-filters" style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
+          <button class="filter-tab active" data-cat="all">All Insights</button>
+          <button class="filter-tab" data-cat="Marketing">Marketing</button>
+          <button class="filter-tab" data-cat="Automation">Automation</button>
+          <button class="filter-tab" data-cat="Design">Branding &amp; Design</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog List Grid -->
+  <section class="section" style="border-top: 1px solid var(--border); padding-top: 5rem; min-height: 50vh;">
+    <div class="container">
+      <div class="grid-3" id="blogGrid">
+        <!-- Dynamically Populated -->
+      </div>
+      <div id="noResults" style="display: none; text-align: center; padding: 5rem 0; color: var(--text-muted);">
+        <p style="font-size: 1.2rem; font-family: var(--font-heading);">No articles found matching your query.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Full Article View Overlay -->
+  <div class="blog-article-overlay" id="articleOverlay">
+    <div class="blog-article-modal glass-card">
+      <button class="article-close-btn">&times;</button>
+      <div id="articleContentArea">
+        <!-- Dynamically Populated -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <img src="images/logo.png" alt="House Of Lancers Logo" class="logo-img" style="height: 44px; width: auto; display: block;">
+        </a>
+        <p>House Of Lancers is a premium growth partner. We scale brands through high-performing marketing, creative luxury design, custom AI integrations, and operational workflows.</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/house_of_lancers/" class="social-link" target="_blank" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/house-of-lancers/" class="social-link" target="_blank" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+          <a href="https://twitter.com/HouseOfLancers" class="social-link" target="_blank" aria-label="Twitter">
+            <svg viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-links-grid">
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="index.html">Home</a></li>
+            <li class="footer-link-item"><a href="about.html">About Us</a></li>
+            <li class="footer-link-item"><a href="services.html">Our Services</a></li>
+            <li class="footer-link-item"><a href="portfolio.html">Our Portfolio</a></li>
+            <li class="footer-link-item"><a href="blog.html">Blog</a></li>
+            <li class="footer-link-item"><a href="admin.html" style="color: var(--accent); font-weight: bold;">CMS Admin</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Core Services</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="smm.html">Social Media Marketing</a></li>
+            <li class="footer-link-item"><a href="automation.html">Business Automation</a></li>
+            <li class="footer-link-item"><a href="design.html">Creative Designing</a></li>
+            <li class="footer-link-item"><a href="video.html">Video Editing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Contact</h4>
+          <ul class="footer-links" style="color: var(--text-muted); font-size: 0.95rem;">
+            <li style="margin-bottom: 0.8rem;">Vishal Apartment, Navrangpura, Ahmedabad, India</li>
+            <li style="margin-bottom: 0.8rem;">houseoflancers@gmail.com</li>
+            <li style="margin-bottom: 0.8rem;">+91 73831 32301</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2026 House Of Lancers. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+  <!-- Local Blog Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Initial Mock Data
+      const defaultBlogs = [
+        {
+          id: '1',
+          title: "The Silent Scaling Engine: How Custom AI Agents Automate Operations",
+          subtitle: "Why manual data capture is holding your sales pipeline back and how webhooks can solve it.",
+          author: "Yagnesh Pandya",
+          category: "Automation",
+          date: "June 24, 2026",
+          image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80",
+          content: "Every business starts with spreadsheets, manual updates, and email copy-pasting. But as you scale, this manual labor turns into an operational bottleneck that slows response times and limits margins. By designing custom automated webhooks and routing lead flows directly to AI qualification agents, businesses can qualify incoming traffic in real-time, assigning deals to reps dynamically and cutting response times to under 30 seconds. Automation is not about removing human relationships; it is about building the system that allows your sales team to focus purely on high-intent calls while automation handles the admin chaos."
+        },
+        {
+          id: '2',
+          title: "Branding Beyond Aesthetics: Forging Luxury Brand Trust in Modern Markets",
+          subtitle: "Why consistency, visual weight, and premium typography drive margins more than discounts.",
+          author: "House of Lancers",
+          category: "Design",
+          date: "June 18, 2026",
+          image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80",
+          content: "In a crowded digital marketplace, discount marketing is a race to the bottom. Premium positioning is built on perceived value, trust, and creative consistency. A unified brand identityâ€”from high-end visual systems, corporate pitch decks, and cohesive typography to structured catalog print assetsâ€”communicates authority. Trust is won in details. When your branding looks premium, your margins reflect it, allowing you to scale without relying on constant price cuts. We explore how structuring brand books and maintaining visual clarity across LinkedIn, Instagram, and packaging constructs a luxury brand narrative that commands market value."
+        },
+        {
+          id: '3',
+          title: "Beyond Emojis: Designing High-Retention Video Content for Social Ads",
+          subtitle: "An engineering-based approach to Instagram Reels editing, motion graphics, and audio pacing.",
+          author: "House of Lancers",
+          category: "Marketing",
+          date: "June 10, 2026",
+          image: "https://images.unsplash.com/photo-1574717024453-354056afd6fc?auto=format&fit=crop&w=600&q=80",
+          content: "Hooking a viewer in the first 2 seconds is a science. High-retention video content does not happen by accidentâ€”it relies on precise pacing, structured hooks, custom subtitles, color grading, and motion graphics that constantly refresh focus. By applying dynamic framing edits and utilizing tight sound design markers, brands can increase watch-time retention rates by up to 240%. This guide covers how to story-board marketing creatives, match audio engineering pacing to brand tone, and use paid Meta ads campaigns to scale organic short-form reels to qualified lead streams."
+        }
+      ];
+
+      // Load from localStorage or populate defaults
+      let blogs = JSON.parse(localStorage.getItem('hol_blogs'));
+      if (!blogs || blogs.length === 0) {
+        blogs = defaultBlogs;
+        localStorage.setItem('hol_blogs', JSON.stringify(blogs));
+      }
+
+      const blogGrid = document.getElementById('blogGrid');
+      const noResults = document.getElementById('noResults');
+      const searchInput = document.getElementById('blogSearch');
+      const filterTabs = document.querySelectorAll('.filter-tab');
+      
+      const articleOverlay = document.getElementById('articleOverlay');
+      const articleCloseBtn = articleOverlay.querySelector('.article-close-btn');
+      const articleContentArea = document.getElementById('articleContentArea');
+
+      let activeCategory = 'all';
+      let searchQuery = '';
+
+      // Render cards
+      const renderBlogs = () => {
+        blogGrid.innerHTML = '';
+        const filtered = blogs.filter(b => {
+          const matchesCat = activeCategory === 'all' || b.category.toLowerCase() === activeCategory.toLowerCase();
+          const matchesSearch = b.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                                b.subtitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                                b.content.toLowerCase().includes(searchQuery.toLowerCase());
+          return matchesCat && matchesSearch;
+        });
+
+        if (filtered.length === 0) {
+          blogGrid.style.display = 'none';
+          noResults.style.display = 'block';
+        } else {
+          blogGrid.style.display = 'grid';
+          noResults.style.display = 'none';
+          
+          filtered.forEach(b => {
+            const card = document.createElement('div');
+            card.className = 'glass-card';
+            card.style.cursor = 'pointer';
+            card.style.display = 'flex';
+            card.style.flexDirection = 'column';
+            card.style.overflow = 'hidden';
+            card.style.padding = '0';
+            
+            card.innerHTML = `
+              <div style="background-image: url('${b.image}'); background-size: cover; background-position: center; height: 200px; width: 100%;"></div>
+              <div style="padding: 2rem; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between;">
+                <div>
+                  <span style="font-size: 0.75rem; color: var(--accent); font-family: var(--font-heading); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem;">${b.category}</span>
+                  <h3 style="font-size: 1.3rem; line-height: 1.3; color: var(--text-primary); margin-bottom: 1rem; font-family: var(--font-heading); font-weight: 700;">${b.title}</h3>
+                  <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">${b.subtitle}</p>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">
+                  <span>By ${b.author}</span>
+                  <span>${b.date}</span>
+                </div>
+              </div>
+            `;
+            
+            card.addEventListener('click', () => openArticle(b));
+            blogGrid.appendChild(card);
+          });
+        }
+      };
+
+      // Open article modal
+      const openArticle = (blog) => {
+        articleContentArea.innerHTML = `
+          <div style="background-image: url('${blog.image}'); background-size: cover; background-position: center; height: 350px; border-radius: 4px; margin-bottom: 2rem;"></div>
+          <span style="font-size: 0.8rem; color: var(--accent); font-family: var(--font-heading); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.5rem;">${blog.category}</span>
+          <h2 class="accent-text" style="font-size: 2.2rem; font-family: var(--font-heading); font-weight: 800; line-height: 1.2; margin-bottom: 1rem;">${blog.title}</h2>
+          <div style="display: flex; gap: 1.5rem; align-items: center; font-size: 0.85rem; color: var(--text-muted); border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; margin-bottom: 2rem;">
+            <span><strong>Author:</strong> ${blog.author}</span>
+            <span><strong>Date:</strong> ${blog.date}</span>
+          </div>
+          <div style="font-size: 1.05rem; line-height: 1.8; color: var(--text-secondary); white-space: pre-wrap;">${blog.content}</div>
+        `;
+        articleOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      };
+
+      // Close article modal
+      const closeArticle = () => {
+        articleOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      };
+
+      articleCloseBtn.addEventListener('click', closeArticle);
+      articleOverlay.addEventListener('click', (e) => {
+        if (e.target === articleOverlay) closeArticle();
+      });
+
+      // Filter tabs handler
+      filterTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          filterTabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          activeCategory = tab.getAttribute('data-cat');
+          renderBlogs();
+        });
+      });
+
+      // Search input handler
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value;
+        renderBlogs();
+      });
+
+      // Initial Render
+      renderBlogs();
+    });
+  </script>
+
+  <!-- Custom Overlay Styles -->
+  <style>
+    .filter-tab {
+      padding: 0.5rem 1.2rem;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-secondary);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-family: var(--font-heading);
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+    .filter-tab:hover, .filter-tab.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(215, 195, 115, 0.08);
+    }
+    .blog-article-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(8px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+    }
+    html.light-mode .blog-article-overlay {
+      background-color: rgba(247, 245, 238, 0.95);
+    }
+    .blog-article-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .blog-article-modal {
+      width: 90%;
+      max-width: 800px;
+      max-height: 85vh;
+      overflow-y: auto;
+      position: relative;
+      padding: 4rem;
+    }
+    @media (max-width: 768px) {
+      .blog-article-modal {
+        padding: 2rem;
+      }
+    }
+    .article-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition-fast);
+      z-index: 10;
+    }
+    .article-close-btn:hover {
+      color: var(--accent);
+    }
+  </style>
+</body>
+</html>

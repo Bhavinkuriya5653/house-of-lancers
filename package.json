@@ -1,0 +1,18 @@
+{
+  "name": "house-of-lancers",
+  "version": "1.0.0",
+  "description": "Premium luxury digital growth and AI automation agency website for House Of Lancers",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx -y http-server -p 3000"
+  },
+  "keywords": [
+    "agency",
+    "luxury",
+    "branding",
+    "automation",
+    "marketing"
+  ],
+  "author": "House of Lancers",
+  "license": "ISC"
+}
