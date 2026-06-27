@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -20,6 +20,7 @@
   <!-- GSAP CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="js/portfolio-data.js"></script>
 </head>
 <body>
 
@@ -111,92 +112,294 @@
             color: var(--accent);
             background-color: rgba(215, 195, 115, 0.05);
           }
+          /* Custom style for the light mode filter states to maintain brand colors */
+          html.light-mode .portfolio-filter.active, 
+          html.light-mode .portfolio-filter:hover {
+            border-color: var(--accent-text);
+            color: var(--accent-text);
+            background-color: var(--dropdown-hover-bg);
+          }
+          
+          /* Card layout overrides and additions */
           .portfolio-item {
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
           }
           .portfolio-item.hidden {
             display: none;
           }
+          .portfolio-preview {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background-color: var(--bg-tertiary);
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+          }
+          .portfolio-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+          }
+          .portfolio-item:hover .portfolio-preview img {
+            transform: scale(1.05);
+          }
+          .portfolio-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(215, 195, 115, 0.08), rgba(215, 195, 115, 0.02));
+            flex-direction: column;
+            padding: 1.5rem;
+            text-align: center;
+          }
+          html.light-mode .portfolio-placeholder {
+            background: linear-gradient(135deg, rgba(57, 140, 100, 0.08), rgba(215, 195, 115, 0.05));
+          }
+          .portfolio-placeholder-icon {
+            font-size: 2.2rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            opacity: 0.6;
+          }
+          html.light-mode .portfolio-placeholder-icon {
+            color: var(--accent-text);
+          }
+          .portfolio-placeholder-name {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+          }
+          .portfolio-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+          }
+          .portfolio-meta {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+          }
+          .portfolio-badge-type {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--accent-text);
+            border: 1px solid rgba(215, 195, 115, 0.2);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            background: rgba(215, 195, 115, 0.03);
+          }
+          html.light-mode .portfolio-badge-type {
+            border-color: rgba(57, 140, 100, 0.25);
+            background: rgba(57, 140, 100, 0.05);
+          }
+          .portfolio-badge-category {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+          }
+          .portfolio-title {
+            color: var(--text-primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+            font-family: var(--font-heading);
+            font-weight: 700;
+          }
+          .portfolio-url {
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-bottom: 1.2rem;
+            word-break: break-all;
+            display: block;
+            font-weight: 500;
+          }
+          html.light-mode .portfolio-url {
+            color: var(--accent-text);
+          }
+          .portfolio-features {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+            margin-top: auto;
+          }
+          .portfolio-feature-badge {
+            font-size: 0.7rem;
+            border: 1px solid var(--border);
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            color: var(--text-secondary);
+            background-color: rgba(255, 255, 255, 0.01);
+            font-weight: 500;
+          }
+          html.light-mode .portfolio-feature-badge {
+            background-color: rgba(0, 0, 0, 0.01);
+          }
+          .portfolio-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: var(--transition-fast);
+            margin-top: 1rem;
+          }
+          .portfolio-cta svg {
+            width: 14px;
+            height: 14px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            transition: transform 0.3s ease;
+          }
+          .portfolio-item:hover .portfolio-cta svg {
+            transform: translateX(4px);
+          }
+          .portfolio-item:hover .portfolio-cta {
+            color: var(--accent-text);
+          }
         </style>
         <button class="portfolio-filter active" data-filter="all">All Projects</button>
-        <button class="portfolio-filter" data-filter="marketing">SMM &amp; Ads</button>
-        <button class="portfolio-filter" data-filter="design">Branding &amp; Design</button>
-        <button class="portfolio-filter" data-filter="video">Video Editing</button>
-        <button class="portfolio-filter" data-filter="automation">Automation</button>
+        <button class="portfolio-filter" data-filter="ecommerce">eCommerce</button>
+        <button class="portfolio-filter" data-filter="it-business">IT &amp; Business</button>
+        <button class="portfolio-filter" data-filter="healthcare-wellness">Healthcare &amp; Wellness</button>
+        <button class="portfolio-filter" data-filter="news-media">News &amp; Media</button>
+        <button class="portfolio-filter" data-filter="real-estate-travel">Real Estate &amp; Travel</button>
+        <button class="portfolio-filter" data-filter="creative-events">Creative &amp; Events</button>
       </div>
 
       <!-- Masonry Grid -->
       <div class="grid-3 portfolio-grid">
-        
-        <!-- Project 1 -->
-        <div class="glass-card portfolio-item" data-category="marketing">
-          <div style="font-size: 0.75rem; color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase;">Social Media Campaign</div>
-          <h3 style="color: var(--text-primary); font-size: 1.4rem; margin-bottom: 1rem;">Zenith Launch</h3>
-          <p style="font-size: 0.9rem; margin-bottom: 1.5rem;">A multi-platform reels and paid social framework that generated +1,420 leads within 90 days.</p>
-          <span style="font-size: 0.8rem; border: 1px solid var(--border); padding: 0.2rem 0.6rem; border-radius: 4px; color: var(--text-muted);">Instagram / FB Ads</span>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="glass-card portfolio-item" data-category="design">
-          <div style="font-size: 0.75rem; color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase;">Branding &amp; Packaging</div>
-          <h3 style="color: var(--text-primary); font-size: 1.4rem; margin-bottom: 1rem;">Kavya Organics</h3>
-          <p style="font-size: 0.9rem; margin-bottom: 1.5rem;">Recreating brand guidelines, luxury outer box design, and optimized product photoshoots.</p>
-          <span style="font-size: 0.8rem; border: 1px solid var(--border); padding: 0.2rem 0.6rem; border-radius: 4px; color: var(--text-muted);">Luxury Brand Identity</span>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="glass-card portfolio-item" data-category="video">
-          <div style="font-size: 0.75rem; color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase;">Video Editing</div>
-          <h3 style="color: var(--text-primary); font-size: 1.4rem; margin-bottom: 1rem;">Reels Retainer</h3>
-          <p style="font-size: 0.9rem; margin-bottom: 1.5rem;">Kinetic subtitle templates and sound designs built for high retention scroll-stopping rates.</p>
-          <span style="font-size: 0.8rem; border: 1px solid var(--border); padding: 0.2rem 0.6rem; border-radius: 4px; color: var(--text-muted);">Short Form Editing</span>
-        </div>
-
-        <!-- Project 4 -->
-        <div class="glass-card portfolio-item" data-category="automation">
-          <div style="font-size: 0.75rem; color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase;">Business Automation</div>
-          <h3 style="color: var(--text-primary); font-size: 1.4rem; margin-bottom: 1rem;">CRM Integration</h3>
-          <p style="font-size: 0.9rem; margin-bottom: 1.5rem;">HubSpot lead routing and WhatsApp official API response triggers saving 20 admin hours weekly.</p>
-          <span style="font-size: 0.8rem; border: 1px solid var(--border); padding: 0.2rem 0.6rem; border-radius: 4px; color: var(--text-muted);">Make / WhatsApp API</span>
-        </div>
-
-        <!-- Project 5 -->
-        <div class="glass-card portfolio-item" data-category="design">
-          <div style="font-size: 0.75rem; color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase;">Logo Design</div>
-          <h3 style="color: var(--text-primary); font-size: 1.4rem; margin-bottom: 1rem;">Aura Group Logo</h3>
-          <p style="font-size: 0.9rem; margin-bottom: 1.5rem;">Bespoke geometric outline house logo reflecting premium structural and consulting clarity.</p>
-          <span style="font-size: 0.8rem; border: 1px solid var(--border); padding: 0.2rem 0.6rem; border-radius: 4px; color: var(--text-muted);">Vector Identity</span>
-        </div>
-
-        <!-- Project 6 -->
-        <div class="glass-card portfolio-item" data-category="automation">
-          <div style="font-size: 0.75rem; color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase;">WhatsApp Automation</div>
-          <h3 style="color: var(--text-primary); font-size: 1.4rem; margin-bottom: 1rem;">Funnels Routing</h3>
-          <p style="font-size: 0.9rem; margin-bottom: 1.5rem;">Automating payment confirmations, Razorpay links generation, and PDF invoice deliveries.</p>
-          <span style="font-size: 0.8rem; border: 1px solid var(--border); padding: 0.2rem 0.6rem; border-radius: 4px; color: var(--text-muted);">CRM Automations</span>
-        </div>
-
+        <!-- Rendered Dynamically via JS -->
       </div>
 
       <script>
-        const filterBtns = document.querySelectorAll('.portfolio-filter');
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        // Global error handler for preview images
+        window.handleImageError = function(img) {
+          img.style.display = 'none';
+          const placeholder = img.nextElementSibling;
+          if (placeholder) {
+            placeholder.style.display = 'flex';
+          }
+        };
 
-        filterBtns.forEach(btn => {
-          btn.addEventListener('click', () => {
-            filterBtns.forEach(otherBtn => otherBtn.classList.remove('active'));
-            btn.classList.add('active');
+        document.addEventListener('DOMContentLoaded', () => {
+          const grid = document.querySelector('.portfolio-grid');
+          
+          if (grid && typeof PORTFOLIO_DATA !== 'undefined') {
+            grid.innerHTML = PORTFOLIO_DATA.map(item => {
+              const cleanUrlDisplay = item.url.replace(/https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+              const featuresHTML = item.features.map(feat => `
+                <span class="portfolio-feature-badge">${feat}</span>
+              `).join('');
+              
+              return `
+                <a href="${item.url}" target="_blank" class="glass-card portfolio-item" data-category="${item.filter}">
+                  <div class="portfolio-preview">
+                    <img src="https://image.thum.io/get/width/600/crop/800/${item.url}" loading="lazy" onerror="handleImageError(this)" alt="${item.name} website preview">
+                    <div class="portfolio-placeholder" style="display: none;">
+                      <div class="portfolio-placeholder-icon">✦</div>
+                      <div class="portfolio-placeholder-name">${item.name}</div>
+                    </div>
+                  </div>
+                  <div class="portfolio-content">
+                    <div class="portfolio-meta">
+                      <span class="portfolio-badge-type">${item.type}</span>
+                      <span class="portfolio-badge-category">${item.category}</span>
+                    </div>
+                    <h3 class="portfolio-title">${item.name}</h3>
+                    <span class="portfolio-url">${cleanUrlDisplay}</span>
+                    
+                    <div class="portfolio-features">
+                      ${featuresHTML}
+                    </div>
+                    
+                    <div class="portfolio-cta">
+                      Visit Website
+                      <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+                    </div>
+                  </div>
+                </a>
+              `;
+            }).join('');
 
-            const filterVal = btn.getAttribute('data-filter');
-
-            portfolioItems.forEach(item => {
-              const cat = item.getAttribute('data-category');
-              if (filterVal === 'all' || cat === filterVal) {
-                item.classList.remove('hidden');
-                gsap.fromTo(item, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5 });
-              } else {
-                item.classList.add('hidden');
+            // Bind interactive glass card effects & custom cursor hooks to new cards
+            const newCards = grid.querySelectorAll('.portfolio-item');
+            const cursor = document.querySelector('.custom-cursor');
+            
+            newCards.forEach(card => {
+              // Mouse move for glow gradient
+              card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+              });
+              
+              // Custom cursor hovered state
+              if (cursor) {
+                card.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+                card.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
               }
+            });
+
+            // GSAP Entrance animation for cards
+            gsap.from('.portfolio-grid .portfolio-item', {
+              opacity: 0,
+              y: 30,
+              duration: 0.8,
+              stagger: 0.05,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: '.portfolio-grid',
+                start: 'top 85%'
+              }
+            });
+          }
+
+          // Filters interaction logic
+          const filterBtns = document.querySelectorAll('.portfolio-filter');
+          filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+              filterBtns.forEach(otherBtn => otherBtn.classList.remove('active'));
+              btn.classList.add('active');
+
+              const filterVal = btn.getAttribute('data-filter');
+              const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+              portfolioItems.forEach(item => {
+                const cat = item.getAttribute('data-category');
+                if (filterVal === 'all' || cat === filterVal) {
+                  item.classList.remove('hidden');
+                  gsap.fromTo(item, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4 });
+                } else {
+                  item.classList.add('hidden');
+                }
+              });
             });
           });
         });
